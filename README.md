@@ -5,4 +5,7 @@ I modified that part which is related to the controller connected to the Arduino
 Please notice that I needed to use the Analog pins as digital. This code is not tested with a real CNC. I tested with stepper motors and they run fine. But further test might be needed. 
 Please let me know if you have any suggestions. 
 You can contact me at mariwan dot jalal at gmail dot com.
+Use this Arduino program with the compatible PC program you find in the mentioned link.
 Thanks.
+
+Note: Special thanks go to the owner of the origional code (homofaciens.de). 
