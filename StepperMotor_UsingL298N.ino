@@ -5,26 +5,13 @@
 //
 //Source & info: www.HomoFaciens.de
 
-
-/*
-Thanks (HomoFaciens) for sharing this code
-
-This code is modified by Mariwan Jalal mariwan.jalal@gmail.com  
-The original code uses the A1543. Since I have many L298N 
-I needed to use them rather than A1543. 
-Be aware that the Pins of Arduino is not 
-compatible with the A1543 version. 
-and I needed to use the Analog pins as digital to cover
-all signals. Please let me know if you find any bugs or 
-suggestions. 
-*/
 #include <Stepper.h>
 #include <avr/io.h>
 #include <util/delay.h>
 
 //Change values below to adapt your motor
-const int stepsPerRevolution = 200;  // change this to fit the number of steps per revolution
-
+const int stepsPerRevolution = 48;  // change this to fit the number of steps per revolution
+const int motorSpeed =250;          // change this to the speed of your motor
 #define X_1        2       //input IN1_L298
 #define X_2        3       //input IN2_L298
 #define X_3        4       //input IN3_L298
@@ -35,13 +22,13 @@ const int stepsPerRevolution = 200;  // change this to fit the number of steps p
 #define Y_3        8       //input IN3_L298
 #define Y_4        9       //input IN4_L298
 
-#define Z_1        10       //input IN1_L298
-#define Z_2        11       //input IN2_L298
-#define Z_3        12       //input IN3_L298
-#define Z_4        13       //input IN4_L298
+#define Z_1        A5       //input IN1_L298
+#define Z_2        A4       //input IN2_L298
+#define Z_3        A3       //input IN3_L298
+#define Z_4        A2       //input IN4_L298
 
-#define DISABLE    14       //DISABLE L2981
-#define RELAY      15       //Router relay
+#define DISABLE    10       //DISABLE L2981
+#define RELAY      11       //Router relay
 
 #define READ_LENGTH 10
 
@@ -78,9 +65,9 @@ void establishContact() {
 
 void setup(){
  // set the speed at 60 rpm:
-  xStepper.setSpeed(60);
-  yStepper.setSpeed(60);
-  zStepper.setSpeed(60);
+  xStepper.setSpeed(motorSpeed);
+  yStepper.setSpeed(motorSpeed);
+  zStepper.setSpeed(motorSpeed);
    
   // initialize the serial port:
   Serial.begin(9600);
@@ -126,20 +113,22 @@ void loop(){
    yStepper.step(1);
   }
   if(YSetPoint < YIsPoint){
+    YIsPoint--;
   yStepper.step(-1);
-  YIsPoint--;
+  
   }
 
   if(ZSetPoint > ZIsPoint){
-  zStepper.step(1);
     ZIsPoint++;
+  zStepper.step(1);
+    
   }
   if(ZSetPoint < ZIsPoint){
-  yStepper.step(-1);
-    ZIsPoint--;
+     ZIsPoint--;
+   zStepper.step(-1);
+   
   }
 /*
- * I am not sure if this needed. I just comment them. 
   delayMicroseconds(20);
   microsTime = microsStart;
   while(microsTime - microsStart < stepPause){
@@ -200,5 +189,3 @@ void loop(){
     }
   }
 }
-
-
