@@ -11,7 +11,7 @@
 
 //Change values below to adapt your motor
 const int stepsPerRevolution = 48;  // change this to fit the number of steps per revolution
-const int motorSpeed =250;          // change this to the speed of your motor
+const int motorSpeed =250;
 #define X_1        2       //input IN1_L298
 #define X_2        3       //input IN2_L298
 #define X_3        4       //input IN3_L298
@@ -21,6 +21,15 @@ const int motorSpeed =250;          // change this to the speed of your motor
 #define Y_2        7       //input IN2_L298
 #define Y_3        8       //input IN3_L298
 #define Y_4        9       //input IN4_L298
+/*
+#define Z_1        10       //input IN1_L298
+#define Z_2        11       //input IN2_L298
+#define Z_3        12       //input IN3_L298
+#define Z_4        13       //input IN4_L298
+
+#define DISABLE    14       //DISABLE L2981
+#define RELAY      15       //Router relay
+*/
 
 #define Z_1        A5       //input IN1_L298
 #define Z_2        A4       //input IN2_L298
