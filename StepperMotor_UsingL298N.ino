@@ -21,15 +21,6 @@ const int motorSpeed =250;
 #define Y_2        7       //input IN2_L298
 #define Y_3        8       //input IN3_L298
 #define Y_4        9       //input IN4_L298
-/*
-#define Z_1        10       //input IN1_L298
-#define Z_2        11       //input IN2_L298
-#define Z_3        12       //input IN3_L298
-#define Z_4        13       //input IN4_L298
-
-#define DISABLE    14       //DISABLE L2981
-#define RELAY      15       //Router relay
-*/
 
 #define Z_1        A5       //input IN1_L298
 #define Z_2        A4       //input IN2_L298
@@ -58,7 +49,6 @@ unsigned long stepTime;
 unsigned long microsStart;
 unsigned long microsTime;
 unsigned long stepPause;
-
 
 // initialize the stepper library on pins 8 through 11:
 Stepper xStepper(stepsPerRevolution, X_1, X_2, X_3, X_4);
